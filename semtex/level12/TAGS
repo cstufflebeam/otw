@@ -1,0 +1,41 @@
+
+level12.server.h,266
+struct auth 1,0
+        unsigned int    token;2,14
+        unsigned int    perms;3,45
+        unsigned int    timestamp;4,76
+struct sharea 8,116
+        int             sem;9,132
+        unsigned int    bitmap;10,161
+        struct auth     list[list11,193
+
+level12.authd.c,166
+#define PATH 21,352
+#define SHM_SIZE 22,373
+#define SHM_KEY 23,395
+#define AUTH_PORT 24,422
+#define BUFSIZE 25,446
+int main(30,561
+int new_connection(137,3944
+
+level12.daemon.c,75
+#define _GNU_SOURCE7,122
+#define TARGET_UID 11,164
+int daemonize(13,189
+
+level12.sem.c,53
+void down(6,77
+int try_down(21,331
+void up(35,555
+
+level12.reader.c,182
+#define PATH 19,313
+#define SHM_SIZE 20,334
+#define SHM_KEY 21,356
+#define AUTH_PORT 22,383
+#define BUFSIZE 23,407
+void list_dir(27,446
+void filedump(40,758
+int main(60,1319
+
+level12.sem.h,0

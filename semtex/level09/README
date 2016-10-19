@@ -1,0 +1,26 @@
+The protocol of the icmp server: (S=server, C=client(you))
+
+C->S icmp type 121 means "connection request" (syn)
+S->C icmp type 122 means "connection accepted."
+S<->C icmp type 123 means "data", this is the only packet that contains payload
+S->C icmp type 124 means "already connected"
+S->C icmp type 125 means "not connected/connection reset"
+
+The rules:
+
+If you send icmp type 121 (syn), you get back a icmp type 122 (accepted),
+or, if you are still "connected", icmp type 124 (already connected).
+
+If you dont send an icmp packet for one minute, your "connection" times out.
+
+If you are not connected and send icmp type 123 (data),
+you will receive icmp type 125 (not connected).
+
+The payload in the data packets is always 1 byte, following bytes will
+be ignored. These single bytes are your data stream.
+
+You can receive a 125 any time, that means remote host closed connection.
+
+You should ignore any packets that you receive from 127.0.0.1, since you
+will receive your own packets that are sent through a raw socket!
+
